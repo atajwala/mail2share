@@ -1,0 +1,24 @@
+<h1>Emails#messages</h1>
+<p>Find me in app/views/emails/messages.html.erb</p>
+  
+<div id="message_center">
+<h1>Displaying Email Msg</h1>
+     
+<div> 
+From: <%= @message.from %> 
+</div>
+<div> 
+To: <%= @message.to %>
+</div>
+<div> 
+Subject: <%= @message.subject %>
+</div>  
+<div>
+Date: <%= @message.date.to_s %>
+</div>    
+<div>   
+<%= @body %>
+</div>  
+
+</div>  
+

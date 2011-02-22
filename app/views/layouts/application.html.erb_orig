@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mail2share</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+  <div id='header'>
+	<img src= "<%= image_path('mail2share.gif') %>" class="comp_logo" alt="mail to share logo">
+  </div>
+	
+<%= yield %>
+
+	<div id='footer'>
+		<br><br><br>
+		<hr width=30%>
+		<p>&copy; 2010 mail2share</p>
+	</div>
+	
+</body>
+</html>

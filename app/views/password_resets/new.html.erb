@@ -1,0 +1,10 @@
+Fill out the form below and instructions to reset your password will be emailed to you:<br />
+
+<div id="forgot_passwd">
+<% form_tag :action=>'create' do %>
+  <label>Email:</label><br />
+  <%= text_field_tag "email" %><br />
+  <br />
+  <%= submit_tag "Reset my password" %>
+<% end %>
+</div>

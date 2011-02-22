@@ -1,0 +1,36 @@
+<table class="table1">
+	<thead>
+	<tr>
+		<th>From</th>
+		<th>Subject</th>
+		<th>Dated</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	<% @usermsgs.each do |message| %>
+	<tr>
+		<td width="20%"><%= message.sender_email %></td>
+		<td width="60%"><%= link_to "#{message.subject}", { :action => "show", :controller => "users", :dir_path => "#{message.file_name}" } %></td>
+		<td width="20%"><%= message.created_at.asctime %></td>
+	</tr>
+	<% end %>
+	</tbody>
+	
+	<tfoot>
+		<tr>
+			<td>	</td>
+			<td>	</td>
+			<td>	</td> 
+		</tr>
+	</tfoot>
+</table>
+<%= will_paginate @usermsgs %>
+<!--
+<%= page_entries_info @usermsgs %>
+-->
+<br />
+
+<%= link_to 'Home', "/" %>
+<%= link_to 'Logout', "/user_sessions/destroy" %>
+<%= link_to 'Change password', "/password_resets/new" %>

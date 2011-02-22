@@ -1,0 +1,32 @@
+<div id='change_passwd'>
+  <p>
+	You are logged in as <b><%= "#{@user.username}" %></b>
+  </p>
+	
+  <p>
+	<h3>Change password</h3>
+
+	<%= form_for @mailuser, :url => { :action => "update" } do |f| %>
+	
+	<div class="field">
+	  <label>Old password:</label><br>
+	  <%= password_field_tag :old_password %><br><br>
+	</div>
+	
+	<div class="field">
+	  <label>New password:</label><br>
+	  <%= password_field_tag :new_password %><br><br>
+	</div>
+	
+	<div class="field">
+	  <label>Re-enter new password:</label><br>
+	  <%= password_field_tag :re_new_password %><br><br>
+	</div>
+	
+	<div class="actions">
+	  <%= f.submit "Change password"%>
+	</div>
+
+	<% end %>
+  </p>
+</div>

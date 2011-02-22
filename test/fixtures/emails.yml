@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  userid: 1
+  username: MyString
+  subject: MyString
+  sender_email: MyString
+  file_name: MyString
+  message_status: MyString
+  delete_flag: false
+
+two:
+  userid: 1
+  username: MyString
+  subject: MyString
+  sender_email: MyString
+  file_name: MyString
+  message_status: MyString
+  delete_flag: false

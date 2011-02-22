@@ -1,0 +1,20 @@
+<h1>Emails#inbox</h1>
+<table>
+  <tr>
+    <th>Userid</th>
+    <th>Username</th>
+    <th>Subject</th>
+    <th>Sender email</th>
+    <th>Filename</th>
+  </tr>
+
+<% @emails.each do |email| %>
+  <tr>
+    <td><%= email.user_id %></td>
+    <td><%= email.username %></td>
+    <td><%= email.subject %></td>
+    <td><%= email.sender_email %></td>
+    <td><%= email.file_name %></td>
+  </tr>
+<% end %>
+</table>

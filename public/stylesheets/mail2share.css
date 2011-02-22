@@ -1,0 +1,198 @@
+#header {
+
+}
+
+#util_links {
+	text-align: right;
+	font-size: 12px;
+	color: #6bb130;
+}
+
+#main {
+	background: #6bb130 url(../images/bg_home_greenfade.png) repeat-x top left;
+    border-top: 1px solid #5f9e2b;
+    border-bottom: 1px solid #5f9e2b;
+	width: 100%;
+	min-height: 550px;
+	position: absolute;
+	left: 0px;    
+}
+
+#main p {
+	padding: 10px;
+	margin: 10px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 25px;
+	line-height: 50px;
+	text-align: left;
+}
+
+#login {
+	width: 26%;
+	float: right;
+	border: 2px solid #FFFFFF;
+	border-bottom-left-radius: 20px 20px;
+	border-bottom-right-radius: 20px 20px;
+	border-top-left-radius: 20px 20px;
+	border-top-right-radius: 20px 20px;
+	margin-left:auto;
+	margin-right: 150px;
+	margin-bottom: 100px;
+	position:relative;
+	padding: 15px;
+}
+
+#login p {
+	font-size: 15px;
+	line-height: 30px;
+	text-align: left;
+}
+
+#change_passwd, #signup, #forgot_passwd {
+	float: center;
+	width: 30%;
+	border: 2px solid #6bb130;
+	border-bottom-left-radius: 20px 20px;
+	border-bottom-right-radius: 20px 20px;
+	border-top-left-radius: 20px 20px;
+	border-top-right-radius: 20px 20px;
+	margin-left:auto;
+	margin-right:auto;
+	position:relative;
+	padding: 15px;
+}
+
+#message_center {
+	border: 2px solid #6bb130;
+	position:relative;
+	padding: 15px;
+	margin: 0px 200px 0px 200px;
+}
+
+#message_left {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	background: #6bb130 url(../images/bg_home_greenfade.png) no-repeat left top;
+}
+
+#message_right {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 200px;
+	background: #6bb130 url(../images/bg_home_greenfade.png) no-repeat right top;
+}
+
+#footer {
+	text-align: center;
+}
+
+.comp_logo {
+	
+}
+
+.misc_logo {
+	padding: 5px;
+	margin-top: 30px;
+}
+
+input {
+	width: 200px;
+    border: 1px solid #D8D8D8;
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+	margin: 0px 10px 5px 0px;
+	padding: 4px;
+	box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+	-moz-box-shadow: rgba(0,0,0, 0.15) 0px 0px 8px;  
+	-webkit-box-shadow: rgba(0,0,0, 0.15) 0px 0px 8px;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));  
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+}
+
+input.focus {
+	border: 2px solid #8CD6F9;
+	border-bottom-left-radius: 2px 2px;
+	border-bottom-right-radius: 2px 2px;
+	border-top-left-radius: 2px 2px;
+	border-top-right-radius: 2px 2px;
+	padding: 3px;
+}
+
+.form label {  
+    margin-left: 10px;  
+    color: #999999;  
+}  
+  
+.submit input {  
+    width: auto;  
+    padding: 9px 15px;  
+    background: #617798;  
+    border: 0;  
+    font-size: 14px;  
+    color: #FFFFFF;  
+	-webkit-border-radius: 5px;  
+	-moz-border-radius: 5px;
+}
+
+div.field {
+	float: left;
+}
+
+table.table1 {
+	width: 100%;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.4em;
+    font-style: normal;
+    border-collapse:separate;
+}
+
+.table1 thead th {
+    padding:5px;
+    color:#fff;
+    text-shadow:1px 1px 1px #568F23;
+    border:1px solid #93CE37;
+    border-bottom:3px solid #9ED929;
+    background-color:#9DD929;
+    background:-webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.02, rgb(123,192,67)),
+        color-stop(0.51, rgb(139,198,66)),
+        color-stop(0.87, rgb(158,217,41))
+        );
+    background: -moz-linear-gradient(
+        center bottom,
+        rgb(123,192,67) 2%,
+        rgb(139,198,66) 51%,
+        rgb(158,217,41) 87%
+        );
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    -moz-border-radius:5px 5px 0px 0px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+
+.table1 tbody td {
+	padding: 7px;
+}
+
+.table1 tbody tr {
+    text-align:left;
+    background-color:#DEF3CA;
+    border: 2px solid #E7EFE0;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    color:#666;
+    text-shadow:1px 1px 1px #fff;
+}
+
+.table1 tbody tr:nth-child(odd)   { background-color: #DEF3CA; }
+.table1 tbody tr:nth-child(even)  { background-color: #BBDE9E; }

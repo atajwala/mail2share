@@ -1,0 +1,51 @@
+<div id="util_links">
+<%= link_to "SIGN UP", "users/new" %> | <%= link_to "SIGN IN", root_url %> (<%= link_to "trouble signing in?", "password_resets/new" %>)
+</div>
+<div id='main'>
+<p>	
+	Welcome to Mail2Share. <br>
+	Blog, Tweet or Facebook your emails on the fly!
+</p>
+
+<div id='login' >
+	<!-- Used some online fix between authlogic and rails3 -->
+<%= form_for @user_session, :as => :user_session, :url => {:action => "create"} do |f| %>
+	<div class="field">
+		<label>Username:  </label>
+		<%= f.text_field :username %><br>
+	</div>
+	<div class="field">
+		<label>Password:  </label>
+		&nbsp;<%= f.password_field :password %><br><br>
+	</div>
+	<div class="submit">
+		<%= f.submit "Sign In" %> <label>Remember me!</label> <%= f.check_box :remember_me %><br>
+	</div>
+<% end %>
+</div>
+
+<p>
+	<a href="http://www.mail2share.info"><img src="<%= image_path('blog_logo.gif') %>" class="misc_logo" width="90" height="90"> </a>
+	<a href="http://www.twitter.com"><img src="<%= image_path('twitter_logo.gif') %>" class="misc_logo" width="90" height="90"> </a>	
+	<a href="http://www.facebook.com"><img src="<%= image_path('facebook_logo.gif') %>" class="misc_logo" width="95" height="95"> </a>
+</p>
+	
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";  
+  feedback_widget_options.company = "mail2share";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#222";
+  feedback_widget_options.style = "idea";
+ 
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>

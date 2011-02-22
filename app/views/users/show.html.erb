@@ -1,0 +1,20 @@
+<div id="message_center">
+<h1>Displaying Email Msg</h1>
+
+<div> 
+From: <%= @mail.from %> 
+</div>
+<div> 
+To: <%= @mail.to %>
+</div>
+<div> 
+Subject: <%= @mail.subject %>
+</div>
+<div> 
+Date: <%= @mail.date.to_s %>
+</div>
+<div>
+<%= @body %>
+</div>
+
+</div>

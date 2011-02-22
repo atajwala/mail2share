@@ -1,0 +1,34 @@
+<div id='signup'>
+<%= form_for @user, :url => { :action => "create" } do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Username %> <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :Password %> <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :Email %> <%= f.text_field :user_email %>
+  </div>
+  <div class="field">
+    <%= f.label :Full_Name %> <%= f.text_field :fullname %>
+  </div>
+  <div class="field">
+	<%= recaptcha_tags %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Account"%>
+  </div>
+<% end %>
+</div>
