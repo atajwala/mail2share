@@ -5,16 +5,16 @@
     <th>Username</th>
     <th>Subject</th>
     <th>Sender email</th>
-    <th>Filename</th>
+    <th>Date</th>
   </tr>
 
 <% @emails.each do |email| %>
   <tr>
     <td><%= email.user_id %></td>
     <td><%= email.username %></td>
-    <td><%= email.subject %></td>
+    <td><%= link_to "#{email.subject}", { :action => "messages", :controller => "emails", :file_key => "#{email.file_key}" } %> </td>
     <td><%= email.sender_email %></td>
-    <td><%= email.file_name %></td>
+    <td><%= email.created_at %></td>
   </tr>
 <% end %>
 </table>
