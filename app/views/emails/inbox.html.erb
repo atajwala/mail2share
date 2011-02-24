@@ -1,7 +1,11 @@
 <h1>Emails#inbox</h1>
+<%= form_tag update_emails_emails_path, :method => :put  do %>
 <%= will_paginate %>
+<%= submit_tag "Remove Emails"  %>
 <table>
   <tr>
+    <th/>
+    <th>id</th>
     <th>Userid</th>
     <th>Username</th>
     <th>Subject</th>
@@ -11,6 +15,8 @@
 
 <% @emails.each do |email| %>
   <tr>
+    <td><%= check_box_tag "email_ids[]", email.id %></td>
+    <td><%= email.id %></td>
     <td><%= email.user_id %></td>
     <td><%= email.username %></td>
     <td><%= link_to "#{email.subject}", { :action => "messages", :controller => "emails", :file_key => "#{email.file_key}" } %> </td>
@@ -19,4 +25,5 @@
   </tr>
 <% end %>
 </table>
+<% end %>
 <%= will_paginate %>

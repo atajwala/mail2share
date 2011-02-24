@@ -2,7 +2,16 @@ Mail2share::Application.routes.draw do
 	
 
   resources :users 
-  resources :emails
+  #resources :emails
+
+
+  #Added by shams for collection
+  resources :emails do
+    collection do
+      put :update_emails
+    end
+  end
+
 
 	get "activations/create"
 
@@ -25,7 +34,7 @@ Mail2share::Application.routes.draw do
 
 
   #added by shams
-  match '/:username', :to => "emails#inbox"
+  match '/:username', :to => "emails#inbox", :as => :emails
   match '/:username/:file_key', :to => "emails#messages"
 
   #added by shams
