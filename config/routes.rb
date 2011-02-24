@@ -4,7 +4,6 @@ Mail2share::Application.routes.draw do
   resources :users 
   #resources :emails
 
-
   #Added by shams for collection
   resources :emails do
     collection do

@@ -50,12 +50,6 @@ class EmailsController < ApplicationController
     #params[:email_ids]
     #update_emails = Email.where("id in ?", params[:email_ids])
     #update_emails.delete_flag = 1
-   #if @update_emails.save
-   #   flash[:success] = "Emails deleted!"
-   #   redirect_to emails_path
-   # else
-   #   render "something went wrong"
-   # end
     Email.update_all(["delete_flag=?, updated_at=?", 1, Time.now], :id => params[:email_ids])
     flash[:success] = "Email(s) removed from public inbox!"
     #redirect_to email_path
