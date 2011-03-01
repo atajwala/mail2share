@@ -1,7 +1,12 @@
 <h1>Emails#inbox</h1>
 <%= form_tag update_emails_emails_path, :method => :put  do %>
 <%= will_paginate %>
-<%= submit_tag "Remove Email(s)"  %>
+
+<%= 
+  if current_user_session  
+    submit_tag "Remove Email(s)"  
+  end
+%>
 <table>
   <tr>
     <th/>

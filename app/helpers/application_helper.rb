@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def logo
-    image_tag("email.png", :alt => "Mail2Share", :class => "round" )
+    image_tag("logo.png", :alt => "Mail2Share", :class => "round" )
     #print "2Share"
     
   end
