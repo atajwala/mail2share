@@ -27,8 +27,11 @@ class EmailsController < ApplicationController
 
 
         if (@message.multipart?)
-#          @body = @message.text_part.decoded
-           @body = @message.html_part
+          #@body = @message.text_part.decoded
+           @body = @message.html_part.decoded
+           #coder = HTMLEntities.new
+            #coder.encode(@body, :named)
+           
         else
           @body = @message.decoded
           @body = @body.to_s
