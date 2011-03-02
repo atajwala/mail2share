@@ -22,7 +22,7 @@ class EmailsController < ApplicationController
 
   def messages
         @email = Email.find_by_file_key(params[:file_key])
-        @message = Mail.read("/home/mail2share/mbox/#{@email.username}/#{@email.file_name}")
+        @message = Mail.read("/webapps/mbox/#{@email.username}/#{@email.file_name}")
        # @email = Email.where("file_key = ?", params[:file_key])
 
 
