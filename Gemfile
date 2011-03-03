@@ -13,6 +13,8 @@ gem 'authlogic', :require => 'authlogic'
 gem 'mysql2'
 gem 'will_paginate', '3.0.pre2'
 
+#added by shams
+gem 'thinking-sphinx', '2.0.0', :require => 'thinking_sphinx'
 
 # Use unicorn as the web server
 # gem 'unicorn'
