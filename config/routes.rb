@@ -11,6 +11,9 @@ Mail2share::Application.routes.draw do
     end
   end
 
+  #added by shams
+  resources :email_messages 
+
 
 	get "activations/create"
 

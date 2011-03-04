@@ -9,4 +9,11 @@
       <li><%= link_to "Help", help_path %></li>
     </ul>
   </nav>
+
+ <center>                 
+   <% form_tag email_messages_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+       <%= submit_tag "Search", :name => nil %>
+  <% end %>
+ </center>
 </header>

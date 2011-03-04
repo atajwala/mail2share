@@ -1,0 +1,18 @@
+<h1>Search#Results</h1>
+Shams was here
+<table>
+  <tr>
+    <th>id</th>
+    <th>email_id</th>
+    <th>Message </th>
+  </tr>
+
+<% @emails.each do |email| %>
+  <tr>
+    <td><%= email.id %></td>
+    <td><%= email.email_id %></td>
+    <td><%= email.email_body %></td>
+  </tr>
+<% end %>
+</table>
+

@@ -1,5 +1,7 @@
 class Email < ActiveRecord::Base
 	belongs_to :user
+  #added by shams
+  has_one :email_message
 
 def to_param
   #he String instance method parameterize will ensure the 
