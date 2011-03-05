@@ -6,6 +6,7 @@ class ActivationsController < ApplicationController
     if @user.activate!
       flash[:notice] = "Your account has been activated!"
       UserSession.create(@user, false) # Log user in manually
+			puts `mkdir /mail2share/mbox/"#{@user.username}"`
       @user.deliver_welcome!
 			redirect_to("/#{@user.username}")
     else
