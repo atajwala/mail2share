@@ -1,9 +1,25 @@
-<h1>Emails#messages</h1>
-<p>Find me in app/views/emails/messages.html.erb</p>
   
 <div id="message_center">
+<div>
+<table><tr>
+<td>
 <h1>Displaying Email Msg</h1>
-     
+</td><td align ="right">
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   <a href="http://twitter.com/share" class="twitter-share-button"
+        data-url="<%= @share_url %>"
+        data-via="mail2share"
+        data-text="I just posted new mail!"
+        data-related="anywhere:"
+        data-count="vertical">Tweet</a>
+</td><td align="right">
+<iframe src="http://www.facebook.com/plugins/like.php?
+href=<%= @share_url %>;
+layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" 
+style="border:none; overflow:hidden; width:150px; height:40px;" allowTransparency="true">
+</iframe>
+</td>
+</tr></table>
 <div> 
 From: <%= @message.from %> 
 </div>
@@ -16,9 +32,13 @@ Subject: <%= @message.subject %>
 <div>
 Date: <%= @message.date.to_s %>
 </div>    
-<div>   
+<div>
 <%= raw @body %>
-</div>  
+</div>
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js#appId=112091452135684&amp;xfbml=1">
+</script><fb:comments href="<%= @share_url %>" num_posts="2" width="500">
+</fb:comments>
 
-</div>  
+</div> 
 

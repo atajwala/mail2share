@@ -13,7 +13,7 @@ class EmailsController < ApplicationController
 
     @user_emails = Email.where("username = ? and delete_flag = ?", params[:username], 0)
     @emails = @user_emails.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 10
-
+    @username =  params[:username]
     respond_to do |format|
       format.html # inbox.html.erb
       format.xml  { render :xml => @email }
@@ -24,6 +24,7 @@ class EmailsController < ApplicationController
         @email = Email.find_by_file_key(params[:file_key])
         @message = Mail.read("/mail2share/mbox/#{@email.username}/#{@email.file_name}")
        # @email = Email.where("file_key = ?", params[:file_key])
+        @share_url = "http://mail2share.info/" + params[:username]+  "/" + params[:file_key]
 
 
         if (@message.multipart?)
