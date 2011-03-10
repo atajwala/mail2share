@@ -4,6 +4,11 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 Mail2share::Application.initialize!
 
+require 'socket'
+#M2S_HOST = request.host_with_port
+M2S_HOST = Socket.gethostname
+
+
 # Memcache configurations
 require 'memcache'
 require 'cached_model'
