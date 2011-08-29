@@ -1,3 +1,9 @@
+<%= stylesheet_link_tag 'custom', :media => 'screen' %>
+<script type="text/javascript">
+	document.getElementById('searchtab').style.visibility = 'hidden';
+	document.getElementsByTagName('section')[0].classList.remove('round');
+</script>
+
 <div id='signup'>
 <%= form_for @user, :url => { :action => "create" } do |f| %>
   <% if @user.errors.any? %>
@@ -13,16 +19,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Username %> <%= f.text_field :username %>
+	<%= f.text_field :username, :onfocus => "if(this.value==this.defaultValue){this.value='';}", :value => "Username" %>
   </div>
   <div class="field">
-    <%= f.label :Password %> <%= f.password_field :password %>
+    <%= f.password_field :password, :onfocus => "if(this.value==this.defaultValue){this.value='';}", :value => "Password" %>
   </div>
   <div class="field">
-    <%= f.label :Email %> <%= f.text_field :user_email %>
+    <%= f.text_field :user_email, :onfocus => "if(this.value==this.defaultValue){this.value='';}", :value => "E-mail" %>
   </div>
   <div class="field">
-    <%= f.label :Full_Name %> <%= f.text_field :fullname %>
+    <%= f.text_field :fullname, :onfocus => "if(this.value==this.defaultValue){this.value='';}", :value => "Full Name" %>
   </div>
   <div class="field">
 	<%= recaptcha_tags %>

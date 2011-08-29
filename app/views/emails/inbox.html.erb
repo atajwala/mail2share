@@ -1,34 +1,46 @@
-<h1><%= @username %>'s public inbox</h1>
+<%= stylesheet_link_tag 'custom', :media => 'screen' %>
+<script type="text/javascript">
+	document.getElementsByTagName('section')[0].classList.add('spacer');
+</script>
+
+<h2><b><%= @username %></b>'s public Inbox.</h2>
+
 <%= form_tag update_emails_emails_path, :method => :put  do %>
 <%= will_paginate %>
 
-<%= 
-  if current_user_session  
-    submit_tag "Remove Email(s)"  
-  end
-%>
+<% if current_user_session and @emails.empty? %>
+  <h2> Inbox is empty! </h2>Try sending an email to <%= @username%>.
+<% end %>
+
+<div id = "delete_emails">
+<% if current_user_session and @emails[0] %>
+  <% submit_tag "Delete Email(s)" %>
+
+</div>
+
 <table>
   <tr>
     <th/>
-    <th>id</th>
-    <th>Userid</th>
-    <th>Username</th>
-    <th>Subject</th>
-    <th>Sender email</th>
+	<th>From</th> 
+    <th>Subject</th>    
     <th>Date</th>
+	<th>Username</th>
   </tr>
 
 <% @emails.each do |email| %>
   <tr>
+ 
+<% if current_user_session %>
     <td><%= check_box_tag "email_ids[]", email.id %></td>
-    <td><%= email.id %></td>
-    <td><%= email.user_id %></td>
-    <td><%= email.username %></td>
+<% end %>
+
+	<td><%= email.sender_email %></td>
     <td><%= link_to "#{email.subject}", { :action => "messages", :controller => "emails", :file_key => "#{email.file_key}" } %> </td>
-    <td><%= email.sender_email %></td>
     <td><%= email.created_at %></td>
+	<td><%= email.username %></td>
   </tr>
 <% end %>
 </table>
+<% end %>
 <% end %>
 <%= will_paginate %>

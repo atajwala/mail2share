@@ -1,12 +1,16 @@
+<%= stylesheet_link_tag 'custom', :media => 'screen' %>
+
+<div id='main'>
 <h3>Change My Password</h3>
 
 <div id='change_passwd'>
 <%= form_tag :action => 'update', :method => :put do %>
   <div class="field">
-  	<label> Password </label>
+  	<label> Password: </label>
   		<%= password_field_tag "password" %><br />
   	</div>
   <br />
   <%= submit_tag "Update my password and log me in" %>
 <% end %>
+</div>
 </div>

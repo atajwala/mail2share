@@ -1,10 +1,16 @@
-Fill out the form below and instructions to reset your password will be emailed to you:<br />
+<%= stylesheet_link_tag 'custom', :media => 'screen' %>
+<script type="text/javascript">
+	document.getElementById('searchtab').style.visibility = 'hidden';
+</script>
 
 <div id="forgot_passwd">
+Fill out the form below and instructions to reset your password will be emailed to you:<br /><br />
 <% form_tag :action=>'create' do %>
-  <label>Email:</label><br />
+  <label>E-mail:</label><br />
   <%= text_field_tag "email" %><br />
   <br />
-  <%= submit_tag "Reset my password" %>
+  <div class="actions">
+  <%= submit_tag "Reset password" %>
+  </div>
 <% end %>
 </div>

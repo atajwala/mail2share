@@ -1,19 +1,24 @@
 <header>
-  <%= link_to logo, root_path %>
   <nav class="round">
     <ul>
       <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Users",  %></li>
-        <li><%= link_to "Profile",  %></li>
-        <li><%= link_to "Settings",  %></li>
-      <li><%= link_to "Help", help_path %></li>
+	  <li><%= link_to "Users",  %></li>
+		<% if current_user_session %>
+		  <li><%= link_to "Logout", "user_sessions/destroy" %></li>
+		  <li><%= link_to "Profile", "password_resets/new",  %></li>
+		<% else %>
+		  <li><%= link_to "Login",  %></li>
+		<% end %>		
     </ul>
   </nav>
 
- <center>                 
+  <div id="banner">
+    <%= link_to logo, root_path %>
+  </div>
+ <div id="searchtab">                 
    <% form_tag email_messages_path, :method => 'get' do %>
+		<%= submit_tag "Search", :id => 'button', :name => nil %>
       <%= text_field_tag :search, params[:search] %>
-       <%= submit_tag "Search", :name => nil %>
   <% end %>
- </center>
+ </div>
 </header>
