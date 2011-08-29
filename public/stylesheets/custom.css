@@ -1,5 +1,7 @@
-.container {
+#container {
   width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body {
@@ -7,23 +9,27 @@ body {
 }
 
 header {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 header img {
-  padding: 1em;
   background: #fff;
 }
 
 section {
-  margin-top: 1em;
   font-size: 120%;
-  padding: 20px;
   background: #fff;
 }
 
 section h1 {
   font-size: 200%;
+}
+
+section h2 {
+	font-family: 'lucida sans unicode', 'lucida grande', sans-serif;
+	font-size: 20px;
+	padding: 10px;
+	color: #222;
 }
 
 /* Links */
@@ -104,6 +110,7 @@ a.signup_button {
 footer {
   text-align: center;
   margin-top: 10px;
+  padding-top: 20px;
   width: 710px;
   margin-left: auto;
   margin-right: auto;
