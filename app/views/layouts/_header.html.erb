@@ -1,19 +1,19 @@
 <header>
   <nav class="round">
     <ul>
-      <li><%= link_to "Home", root_path %></li>
-	  <li><%= link_to "Users",  %></li>
+      <li><%= link_to "Home", root_url %></li>
+	  <li><%= link_to "Users", users_inbox_url %></li>
 		<% if current_user_session %>
-		  <li><%= link_to "Logout", "user_sessions/destroy" %></li>
-		  <li><%= link_to "Profile", "password_resets/new",  %></li>
+		  <li><%= link_to "Logout", session_destroy_url %>
+		  <li><%= link_to "Profile", passwd_reset_edit_url,  %></li>
 		<% else %>
-		  <li><%= link_to "Login",  %></li>
+		  <li><%= link_to "Login", root_url %></li>
 		<% end %>		
     </ul>
   </nav>
 
   <div id="banner">
-    <%= link_to logo, root_path %>
+    <%= link_to logo, root_url %>
   </div>
  <div id="searchtab">                 
    <% form_tag email_messages_path, :method => 'get' do %>
@@ -21,4 +21,10 @@
       <%= text_field_tag :search, params[:search] %>
   <% end %>
  </div>
+
+<!--[if IE 7]>
+<div class="flash notice">
+Mail2share is best experienced in Chrome, Firefox or Safari browsers.
+</div>
+<![endif]-->
 </header>

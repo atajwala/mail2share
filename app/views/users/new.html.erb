@@ -1,8 +1,9 @@
 <%= stylesheet_link_tag 'custom', :media => 'screen' %>
 <script type="text/javascript">
 	document.getElementById('searchtab').style.visibility = 'hidden';
-	document.getElementsByTagName('section')[0].classList.remove('round');
+	document.getElementById('container').style.width = '310px';
 </script>
+
 
 <div id='signup'>
 <%= form_for @user, :url => { :action => "create" } do |f| %>
@@ -28,7 +29,7 @@
     <%= f.text_field :user_email, :onfocus => "if(this.value==this.defaultValue){this.value='';}", :value => "E-mail" %>
   </div>
   <div class="field">
-    <%= f.text_field :fullname, :onfocus => "if(this.value==this.defaultValue){this.value='';}", :value => "Full Name" %>
+    <%= f.text_field :fullname, :onfocus => "if(this.value==this.defaultValue){this.value='';}", :value => "Full Name (optional)" %>
   </div>
   <div class="field">
 	<%= recaptcha_tags %>

@@ -1,5 +1,7 @@
-<div id="message_center">
-<h1>Displaying Email Msg</h1>
+<%= stylesheet_link_tag 'custom', :media => 'screen' %>
+<script type="text/javascript">
+	document.getElementsByTagName('section')[0].classList.add('spacer');
+</script>
 
 <div> 
 From: <%= @mail.from %> 
@@ -17,4 +19,3 @@ Date: <%= @mail.date.to_s %>
 <%= @body %>
 </div>
 
-</div>

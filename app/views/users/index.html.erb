@@ -1,36 +1,39 @@
-<table class="table1">
-	<thead>
-	<tr>
-		<th>From</th>
-		<th>Subject</th>
-		<th>Dated</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	<% @usermsgs.each do |message| %>
-	<tr>
-		<td width="20%"><%= message.sender_email %></td>
-		<td width="60%"><%= link_to "#{message.subject}", { :action => "show", :controller => "users", :dir_path => "#{message.file_name}" } %></td>
-		<td width="20%"><%= message.created_at.asctime %></td>
-	</tr>
-	<% end %>
-	</tbody>
-	
-	<tfoot>
-		<tr>
-			<td>	</td>
-			<td>	</td>
-			<td>	</td> 
-		</tr>
-	</tfoot>
-</table>
-<%= will_paginate @usermsgs %>
-<!--
-<%= page_entries_info @usermsgs %>
--->
-<br />
+<script type="text/javascript">
+	document.getElementsByTagName('section')[0].classList.add('spacer');
+</script>
 
-<%= link_to 'Home', "/" %>
-<%= link_to 'Logout', "/user_sessions/destroy" %>
-<%= link_to 'Change password', "/password_resets/new" %>
+<%= will_paginate %>
+<div id="userlists">
+<ul>
+<% @users.each do |user| %>
+  <li>
+  <div id="usericon">
+	<%= link_to userlogo, user.username %>
+  </div>
+  
+  <b> User: </b> <%= user.username %> <br />
+  <b> Name: </b> <%= user.fullname %> <br />
+
+  <div id="userinbox">
+  <% form_tag "#{user.username}", :method => 'post' do %>
+	<div class = "actions">
+		<%= submit_tag "#{user.username}'s Inbox" %>
+	</div>
+  <% end %>
+  </div>
+  
+  <b> E-mail: </b> <%= user.username %>@mail2share.com <br />
+  <b> Joined: </b> <%= pretty_date user.created_at %> <br />
+  <b> Last seen on: </b>
+  <% if user.last_login_at %>
+	<%= pretty_date user.last_login_at %> <br />	
+  <% else %>
+	Not lately <br/>
+  <% end %>
+  <br />
+  </li>	
+<% end %>
+</ul>
+</div>
+<%= will_paginate %>
+

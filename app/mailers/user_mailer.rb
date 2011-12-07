@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
 		@user = user
 		@url = "http://www.mail2share.com"
 		mail(:to => user.user_email,
-				 :subject => "Welcome to Mail2Share")
+				 :subject => "Welcome to Mail2Share #{user.username}!")
 	end
 	
 	def forgot_password_email(user)
@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
 	def activation_email(user)
 	@user = user
 	@url = "http://www.mail2share.com"
-	@account_activation_url = "http://#{M2S_HOST}/activate/#{user.perishable_token}"
+	@account_activation_url = "http://www.mail2share.com/activate/#{user.perishable_token}"
 	mail(:to => user.user_email,
 			 :subject => "Mail2Share - account activation")
 	end
@@ -26,7 +26,7 @@ class UserMailer < ActionMailer::Base
 	def password_reset_email(user)
 		@user = user
 		@url = "http://www.mail2share.com"
-		@edit_password_reset_url = "http://#{M2S_HOST}/password_resets/#{user.perishable_token}"
+		@edit_password_reset_url = "http://www.mail2share.com/password_resets/#{user.perishable_token}"
 		mail(:to => user.user_email,
 				 :subject => "Mail2Share - password reset")
 	end

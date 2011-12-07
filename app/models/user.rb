@@ -6,13 +6,19 @@ class User < ActiveRecord::Base
 		#c.validate_email_field = false
 		#c.validate_login_field = false
 		#c.validate_password_field = false
-		#c.email_field = 'user_email'
+		c.email_field = 'user_email'
+		#c.password_field = 'password'
 		#c.login_field = 'username'
 	end
 	
 	def activate!
 	    self.active = true
 	    save
+	end
+	
+	def deactivate!
+		  self.active = false
+		  save
 	end
 	
 	def deliver_activation_instructions!
@@ -29,5 +35,10 @@ class User < ActiveRecord::Base
 		reset_perishable_token!  
 		UserMailer.password_reset_email(self).deliver
 	end
+	
+	define_index do
+    indexes [fullname, username], :as => :name
+    indexes location
+  end
 	
 end

@@ -3,28 +3,32 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <title>Welcome to Mail2share</title>
+  <%= stylesheet_link_tag 'custom', :media => 'screen' %>
 </head>
 
 <body>
-  <div>	
+  <div class="round", align="center">	
 	<img src= "http://mail2share.com/images/m2s_logo.png" class="comp_logo" alt="mail to share logo">
-	<!--<img src= "<%= image_url('m2s_logo.png') %>" class="comp_logo" alt="mail to share logo"> -->
-	<hr width=100%>
-	<br>
+	<hr width=80%>
+	<br />
   </div>
-	
+
+<div class="round", align="center">	
   <h1> Welcome to Mail2Share, <%= @user.username %> </h1>
   <p>
-	We hope our service comes handy to you! <br>
+	We hope our service comes handy to you! <br />
   </p>
   <p>
-	To login to the site, just follow this link: <%= @url %> <br>
+	Your mail2share address is <%= @user.username %>@mail2share.com <br />
+	You can start right away by sending mails to this account and sharing it with friends. <br />
+	To login to the site, just follow this link: <%= @url %> <br /><br /><br />
 
-	Regards, <br>
-	mail2share Team <br>
+	Regards, <br />
+	mail2share Team <br />
   </p>
-<div>
-	<br><br><br>
+</div>
+<div class="round", align="center">
+	<br /><br /><br />
 	<hr width=50%>
 	<p>&copy; 2011 mail2share</p>
 </div>

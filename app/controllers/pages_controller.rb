@@ -18,4 +18,12 @@ class PagesController < ApplicationController
     @title = "About"
   end
 
+  def terms
+	  @title = "Terms"
+		respond_to do |format|
+      format.html
+      format.xml  { render :xml => @email }
+    end
+	end
+
 end

@@ -14,17 +14,18 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
 
 		if @user_session.save
-      flash[:notice] = "Login successful!"
+      flash[:notice] = "Login successful."
       redirect_to("/#{@user_session.username}")
     else
-      render :action => :new
+			flash[:error] = "Wrong username/password combination. Please check and try again."
+      redirect_to("/")
     end
   end
 
   def update
     @user_session = UserSession.update_attributes(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Login successful!"
+      flash[:notice] = "Login successful."
       redirect_to("/#{@user_session.username}")
     else
       render :action => :new
@@ -33,7 +34,7 @@ class UserSessionsController < ApplicationController
   
   def destroy
     current_user_session.destroy
-    flash[:notice] = "Logout successful!"
+    flash[:notice] = "Logout was successful."
 		redirect_to("/")
     #redirect_back_or_default new_user_session_url
   end

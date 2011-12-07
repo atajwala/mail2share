@@ -1,16 +1,28 @@
 <%= stylesheet_link_tag 'custom', :media => 'screen' %>
-
-<div id='main'>
-<h3>Change My Password</h3>
+<script type="text/javascript">
+	document.getElementById('searchtab').style.visibility = 'hidden';
+	document.getElementById('container').style.width = '400px';
+</script>
 
 <div id='change_passwd'>
+Please enter a new password for this account: <br /> <br />
 <%= form_tag :action => 'update', :method => :put do %>
   <div class="field">
   	<label> Password: </label>
   		<%= password_field_tag "password" %><br />
-  	</div>
+  </div>
   <br />
+  <div class="actions">
   <%= submit_tag "Update my password and log me in" %>
+  </div>
 <% end %>
 </div>
+
+<div id='change_passwd'>
+NOTE: Deactivating this account is irreversible. You will not be able to sign-up again with the same 'username' anymore. <br /> <br />
+<%= form_tag :action => 'deactivate', :method => :post do %>
+  <div class="actions">
+  <%= submit_tag "Deactivate my account" %>
+  </div>
+<% end %>
 </div>

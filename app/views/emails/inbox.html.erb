@@ -1,46 +1,76 @@
 <%= stylesheet_link_tag 'custom', :media => 'screen' %>
 <script type="text/javascript">
 	document.getElementsByTagName('section')[0].classList.add('spacer');
+	document.getElementById('container').style.width = '1100px';
+	var RecaptchaOptions = { theme : 'clean'};
 </script>
-
+	
 <h2><b><%= @username %></b>'s public Inbox.</h2>
 
 <%= form_tag update_emails_emails_path, :method => :put  do %>
 <%= will_paginate %>
 
-<% if current_user_session and @emails.empty? %>
-  <h2> Inbox is empty! </h2>Try sending an email to <%= @username%>.
+<% if @emails.empty? %>
+  <h2> Inbox is empty! </h2>Try sending an email to <b> <%= @username %>@mail2share.com </b>
 <% end %>
 
+<% if current_user_session and @emails[0] and @is_this_me %>
 <div id = "delete_emails">
-<% if current_user_session and @emails[0] %>
-  <% submit_tag "Delete Email(s)" %>
-
+  <%= submit_tag "Delete Email(s)" %>
 </div>
+<% end %>
 
+<% if @emails[0] %>
+<div id="inbox">
 <table>
   <tr>
-    <th/>
-	<th>From</th> 
-    <th>Subject</th>    
-    <th>Date</th>
-	<th>Username</th>
+	<% if current_user_session and @emails[0] and @is_this_me %>
+	  <th class="inboxselect"> </th>
+	<% end %>
+	<!--<th>From</th>--> 
+    <th class="inboxsubject">Subject</th>
+    <th class="inboxdate">Date</th>
+	<th class="inboxsentby">Sent By</th>
+	<th class="inboxshare">Share</th>
+	<th/>
   </tr>
 
 <% @emails.each do |email| %>
   <tr>
  
-<% if current_user_session %>
+<% if current_user_session and @emails[0] and @is_this_me %>
     <td><%= check_box_tag "email_ids[]", email.id %></td>
 <% end %>
 
-	<td><%= email.sender_email %></td>
-    <td><%= link_to "#{email.subject}", { :action => "messages", :controller => "emails", :file_key => "#{email.file_key}" } %> </td>
-    <td><%= email.created_at %></td>
-	<td><%= email.username %></td>
+	<!--<td> <%= mail_to email.sender_email %> </td>-->
+	<!--<td><%= email.username %></td>-->
+
+<td><%= link_to "#{email.subject}", { :action => "messages", :controller => "emails", :file_key => "#{email.file_key}" } %> </td>
+	<td><%= pretty_date email.created_at %></td>
+	<td><%= @user_hash[email.file_name] %></td>
+	
+	<td>
+	<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+	   <a href="http://twitter.com/share" class="twitter-share-button"
+	        data-url="<%= "http://mail2share.com/#{email.username}/msg_#{email.file_name}" %>"
+	        data-via="mail2share"
+	        data-text="I just shared a new mail!"
+	        data-related="anywhere:"
+	        data-count="horizontal">Tweet</a>
+	</td>
+	<td>
+	<iframe src="http://www.facebook.com/plugins/like.php?
+	href=<%= "http://mail2share.com/#{email.username}/msg_#{email.file_name}" %>;
+	layout=button_count&amp;action=like&amp;colorscheme=light&amp; scrolling="no" frameborder="0" 
+	style="border:none; overflow:hidden; width:58px; height:25px;" allowTransparency="true">
+	</iframe>
+	</td>
+	
   </tr>
 <% end %>
 </table>
+</div>
 <% end %>
 <% end %>
 <%= will_paginate %>
+

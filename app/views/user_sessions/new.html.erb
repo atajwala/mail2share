@@ -1,7 +1,23 @@
 <%= stylesheet_link_tag 'mail2share.css', :media => 'screen' %>
+<%= stylesheet_link_tag  'jquery.lightbox-0.5', :media => 'screen' %>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js" ></script>
+<script type="text/javascript" src="javascripts/jquery.lightbox-0.5.min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+    $('#gallery a').lightBox();
+});
+</script>
+
 <!-- <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.0.0.min.css"> -->
 <div id="util_links">
-<%= link_to "SIGN UP", "users/new" %> | <%= link_to "SIGN IN", root_url %> (<%= link_to "trouble signing in?", "password_resets/new" %>)
+<nav class="round">
+<ul>
+<li> <%= link_to "SIGN UP!", users_new_url %> </li> 
+<!--<li> <%= link_to "SIGN IN", root_url %> </li>-->
+<li> <%= link_to "Trouble signing in?", "password_resets/new" %> </li>
+</ul>
+</nav>
 </div>
 <div id='main'>
 
@@ -16,38 +32,54 @@
 	
 <div id="tagline">
 <p>	
-	Your Social Inbox!<br />
-	Making e-mail social everyday.<br />
-	Blog, Share your e-mails on the fly.<br />
-	Give it a try ...
+	<br />Your Social Inbox!<br />
+	<!--Making e-mail social everyday.<br />-->
+	Share your e-mails on the fly.<br /><br />
+	Give it a try >>>
 </p>
 </div>
 
-<div id='login' >
-	<!-- Used some online fix between authlogic and rails3 -->
+<div id="gallery">
+  <ul>
+	<li>
+   	  <a href = "images/users.png" title="The 'users' tab on the top right corner allows you to see all public inboxes listed on Mail2share."> 
+		<img src="images/users_thumb.png"/> 
+	  </a>
+	</li>
+	<li>
+   	  <a href = "images/userpage.png" title="Clicking on any user inbox will take you to their public inbox. If you like something in that inbox, then go ahead and share it via Twitter or like it on Facebook."> 
+		<img src="images/userpage_thumb.png"/> 
+	  </a>
+	</li>
+	<li>
+   	  <a href = "images/loggedin.png" title="Once you sign-up and login, you can manage your inbox content to the outside world. Here you also can share your email(s) via Twitter or Facebook"> 
+		<img src="images/loggedin_thumb.png"/> 
+	  </a>
+	</li>
+	<li>
+   	  <a href = "images/mail.png" title="You can view an email by clicking it. This will take you to that email page. You can comment on this page via Facebook,Yahoo,AOL or Hotmail. You can share this page directly via Twitter or Facebook"> 
+		<img src="images/mail_thumb.png"/> 
+	  </a>
+	</li>
+  </ul>
+</div>
+
 <%= form_for @user_session, :as => :user_session, :url => {:action => "create"} do |f| %>
+    <fieldset>
+	<legend> LOGIN </legend>
 	<div class="field">
-		<label>Username:  </label>
-		<%= f.text_field :username %><br>
-	</div>
-	<div class="field">
-		<label>Password:  </label>
-		&nbsp;<%= f.password_field :password %><br><br>
+		<%= f.text_field :username, :onfocus => "if(this.value==this.defaultValue){this.value='';}", :value => "username" %><br />
+		<%= f.password_field :password, :onfocus => "if(this.value==this.defaultValue){this.value='';}", :value => "password" %><br />
 	</div>
 	<div class="submit">
 		<%= f.submit "Sign In" %> <label>Remember me!</label> <%= f.check_box :remember_me %><br>
 	</div>
+	</fieldset>
 <% end %>
+
 </div>
 
-<!-- 
-<p>
-	<a href="http://www.mail2share.info"><img src="<%= image_path('blog_logo.gif') %>" class="misc_logo" width="90" height="90"> </a>
--->
-
-	
-</div>
-
+<!--
 <script type="text/javascript" charset="utf-8">
   var is_ssl = ("https:" == document.location.protocol);
   var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
@@ -64,4 +96,26 @@
   feedback_widget_options.style = "idea";
  
   var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+-->
+
+<script type="text/javascript">
+	var _usrp = {
+		type: "button",
+		company: "mail2share",
+		host: "mail2share.userrules.com",
+		mode: "advanced",
+		sso: {},
+		getVisitorId: function() {return "";},
+		getAdditionalParams: function() {return "";},
+		placement: "left",
+		color: ["#32312E", "#62615E"]
+	};
+
+	(function(D) {
+		var _usr = D.createElement("script"), s = D.getElementsByTagName("script")[0];
+		_usr.type = "text/javascript"; _usr.async = true;
+		_usr.src = ("https:" == D.location.protocol ? "https" : "http" ) + "://dtkm4pd19nw6z.cloudfront.net/js/userrules/9a41a826e957127b4e5bfc7d140e45c4/feedback.canary.js";
+		s.parentNode.insertBefore(_usr, s);
+	})(document);
 </script>
