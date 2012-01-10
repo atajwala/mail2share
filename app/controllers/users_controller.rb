@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save_without_session_maintenance and verify_recaptcha
       @user.deliver_activation_instructions!
       flash[:notice] = "Your account has been created. Please check \
-						    your e-mail for your account activation instructions!"
+                your e-mail for your account activation instructions!"
       redirect_to("/")
     else
       render :action => :new
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where(:active => true).paginate(:page => params[:page], 
-												:order => 'created_at DESC', :per_page => 10)
+                        :order => 'created_at DESC', :per_page => 10)
   end
   
   def update
