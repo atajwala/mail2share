@@ -1,19 +1,18 @@
 class EmailMessage < ActiveRecord::Base
-	belongs_to :email
-  #validates_presence_of :name
+  belongs_to :email
 
- def to_param
-   email_body.parameterize
- end
+  def to_param
+    email_body.parameterize
+  end
 
 =begin
- def self.search(search)
-  if search
-    find(:all, :conditions => ['email_body LIKE ?', "%#{search}%"])
-  else
-    find(:all)
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['email_body LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
   end
- end
 =end
 
  define_index do

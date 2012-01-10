@@ -1,36 +1,36 @@
 require 'mail'
 
 class EmailsController < ApplicationController
-  def inbox	
-		@user = User.where("username = ? and active = ?", params[:username], TRUE)
-		if @user.empty?
-			#flash[:error] = "Sorry. User #{params[:username]} does not exist, #{ link_to "SignUp", "users/new" } to create one."
-			flash[:error] = "Sorry. User \"#{params[:username]}\" does not exist, SignUp to create one."
-			redirect_to :root
-			return
-		end
+  def inbox 
+    @user = User.where("username = ? and active = ?", params[:username], TRUE)
+    if @user.empty?
+      #flash[:error] = "Sorry. User #{params[:username]} does not exist, #{ link_to "SignUp", "users/new" } to create one."
+      flash[:error] = "Sorry. User \"#{params[:username]}\" does not exist, SignUp to create one."
+      redirect_to :root
+      return
+    end
 
-		@is_this_me = FALSE
-		@this_user = current_user
-		print Rails.logger.info(@this_user.inspect)
+    @is_this_me = FALSE
+    @this_user = current_user
+    print Rails.logger.info(@this_user.inspect)
     if (@this_user and @this_user.username == params[:username])
-	    @is_this_me = TRUE
-	  end
+      @is_this_me = TRUE
+    end
 
-		@user_hash = Hash.new
+    @user_hash = Hash.new
     @user_emails = Email.where("username = ? and delete_flag = ?", params[:username], 0)
    
-		@user_emails.each do |sender|
-	    @tmp_user = User.find_by_user_email(sender.sender_email)
-	    if @tmp_user
-				print Rails.logger.info(@tmp_user.inspect)
-				@user_hash[sender.file_name] = @tmp_user.fullname
-			else
-				@user_hash[sender.file_name] = "unknown"
-		  end
-	  end
+    @user_emails.each do |sender|
+      @tmp_user = User.find_by_user_email(sender.sender_email)
+      if @tmp_user
+        print Rails.logger.info(@tmp_user.inspect)
+        @user_hash[sender.file_name] = @tmp_user.fullname
+      else
+        @user_hash[sender.file_name] = "unknown"
+      end
+    end
     
-		@emails = @user_emails.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 12
+    @emails = @user_emails.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 12
     @username =  params[:username]
     respond_to do |format|
       format.html # inbox.html.erb
@@ -47,11 +47,11 @@ class EmailsController < ApplicationController
            @body = @message.html_part.decoded
 =begin
            @body_sanitized = @body.gsub(/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, '####@####.##')
-					 print Rails.logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-					 print Rails.logger.info("#{@body_sanitized.to_s}")
-					 print Rails.logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+           print Rails.logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+           print Rails.logger.info("#{@body_sanitized.to_s}")
+           print Rails.logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 =end      
-  		else
+      else
           @body = @message.decoded
           @body = @body.to_s
         end

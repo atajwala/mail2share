@@ -14,18 +14,18 @@ module ApplicationHelper
   end
 
   def aslam_logo
-		image_tag("me.jpg", :alt => "Aslam Tajwala", :size => "100")
-	end
+    image_tag("me.jpg", :alt => "Aslam Tajwala", :size => "100")
+  end
 
   def userlogo
-		image_tag("profile.png", :alt => "Default user profile picture", :class => "round")
-	end
+    image_tag("profile.png", :alt => "Default user profile picture", :class => "round")
+  end
 
-	def pretty_date(date)
-	  return date unless date.is_a?(Time)
-	  return date.strftime("%B %d %Y, %r") unless Time.now.year == date.year
-	  date.strftime("%B %d, %r")
-	end
+  def pretty_date(date)
+    return date unless date.is_a?(Time)
+    return date.strftime("%B %d %Y, %r") unless Time.now.year == date.year
+    date.strftime("%B %d, %r")
+  end
   
 end
 
